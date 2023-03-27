@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mensj_InfoTest
 {
-    abstract class mensj_Canditato
+    public abstract class mensj_Canditato
     {
         private int mensj_matricola;
         private string mensj_nome;

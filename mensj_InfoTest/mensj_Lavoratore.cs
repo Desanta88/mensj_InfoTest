@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mensj_InfoTest
 {
-    public class mensj_Lavoratore:mensj_Canditato
+    public class mensj_Lavoratore:mensj_Canditato,IComparable<mensj_Lavoratore>,IEquatable<mensj_Lavoratore>
     {
         private int mensj_esperienze;
         public int Esperienze
@@ -40,5 +40,31 @@ namespace mensj_InfoTest
                 return true;
             return false;
         }
+        public override string ToString()
+        {
+            return Matricola.ToString() + ";" + Nome + ";" + Esperienze.ToString();
+        }
+        public bool Equals(mensj_Lavoratore l)
+        {
+            if (l == null) return false;
+            if (this == l) return true;
+
+            return this.Matricola == l.Matricola && this.Nome == l.Nome && this.Esperienze == l.Esperienze;
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is mensj_Lavoratore))
+                return false;
+
+            if (obj == null) return false;
+
+            return this.Equals(obj);
+        }
+        public int CompareTo(mensj_Lavoratore l)
+        {
+            return this.punteggio().CompareTo(l.punteggio());
+        }
+
+        public override int GetHashCode() => (Matricola, Nome).GetHashCode();
     }
 }

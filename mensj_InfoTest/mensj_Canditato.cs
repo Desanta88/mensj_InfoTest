@@ -41,14 +41,10 @@ namespace mensj_InfoTest
             Matricola = m;
             Nome = n;
         }
-        public bool isIdoneo()
-        {
-            return true;
-        }
-        public int punteggio()
-        {
-            return 0;
-        }
+        public abstract bool isIdoneo();
+
+
+        public abstract int punteggio();
 
     }
 }

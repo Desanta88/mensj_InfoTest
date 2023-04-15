@@ -52,18 +52,18 @@ namespace mensj_InfoTest
         }
         public bool Equals(mensj_Canditato c)
         {
-            if(c==null) return false;
-            if (this == c) return true;
+            if( c == null ) return false;
+            if ( this == c ) return true;
 
             return this.Matricola == c.Matricola && this.Nome == c.Nome;
         }
 
         public override bool Equals(object obj)
         {
-            if(!(obj is mensj_Canditato))
+            if( !(obj is mensj_Canditato) )
                 return false;
                
-            if(obj==null) return false;
+            if( obj==null ) return false;
 
             return this.Equals(obj);
         }

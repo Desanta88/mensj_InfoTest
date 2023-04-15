@@ -14,11 +14,15 @@ namespace mensj_InfoTest
         public int Voto
         {
             get { return mensj_voto; }
+
             set
             {
-                if (mensj_voto > 0 && mensj_voto <= 110)
+                if ( mensj_voto > 0 && mensj_voto <= 110 )
+
                     mensj_voto = value;
+
                 else
+
                     throw new Exception("voto non valido");
             }
     
@@ -33,8 +37,10 @@ namespace mensj_InfoTest
             Voto = 0;
             Lode = false;
         }
-        public mensj_Disoccupato(int v,bool l)
+        public mensj_Disoccupato(int m,string n,int v,bool l)
         {
+            Matricola = m;
+            Nome = n;
             Voto = v;
             Lode = l;          
         }
@@ -42,34 +48,38 @@ namespace mensj_InfoTest
         {
             int vs = 0;
             vs = (Voto * 100) / 110;
-            if (Lode == true)
+            if ( Lode == true )
+
                 vs += 5;
+
             return vs;
 
         }
         public override bool isIdoneo()
         {
-            if (punteggio() >= 72)
+            if ( punteggio() >= 72 )
+
                 return true;
+
             return false;
         }
         public override string ToString()
         {
-            return Matricola.ToString() + ";" + Nome + ";" + Voto.ToString()+";"+Lode.ToString();
+            return base.ToString() + ";" + Voto.ToString()+";"+Lode.ToString();
         }
         public bool Equals(mensj_Disoccupato d)
         {
-            if (d == null) return false;
-            if (this == d) return true;
+            if ( d == null ) return false;
+            if ( this == d ) return true;
 
-            return this.Matricola == d.Matricola && this.Nome == d.Nome && this.Voto==d.Voto && this.Lode == d.Lode;
+            return base.Equals(d) && this.Voto==d.Voto && this.Lode == d.Lode;
         }
         public override bool Equals(object obj)
         {
-            if (!(obj is mensj_Disoccupato))
+            if ( !(obj is mensj_Disoccupato) )
                 return false;
 
-            if (obj == null) return false;
+            if ( obj == null ) return false;
 
             return this.Equals(obj);
         }

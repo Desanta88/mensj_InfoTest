@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mensj_InfoTest
 {
-    public class mensj_Lavoratore:mensj_Canditato,IComparable<mensj_Lavoratore>,IEquatable<mensj_Lavoratore>
+    public class mensj_Lavoratore: mensj_Canditato,IComparable<mensj_Lavoratore>,IEquatable<mensj_Lavoratore>
     {
         private int mensj_esperienze;
         public int Esperienze
@@ -14,9 +14,12 @@ namespace mensj_InfoTest
             get { return mensj_esperienze; }
             set
             {
-                if (mensj_esperienze >= 0 && mensj_esperienze <= 5)
+                if ( mensj_esperienze >= 0 && mensj_esperienze <= 5 )
+
                     mensj_esperienze = value;
+
                 else
+
                     throw new Exception("numero di esperienze non valide");
             }
         }
@@ -24,8 +27,10 @@ namespace mensj_InfoTest
         {
             Esperienze = 0;
         }
-        public mensj_Lavoratore(int e)
+        public mensj_Lavoratore(int m,string n,int e)
         {
+            Matricola = m;
+            Nome = n;
             Esperienze = e;
         }
         public override int punteggio()
@@ -36,27 +41,29 @@ namespace mensj_InfoTest
         }
         public override bool isIdoneo()
         {
-            if (punteggio() >= 60)
+            if ( punteggio() >= 60 )
+
                 return true;
+
             return false;
         }
         public override string ToString()
         {
-            return Matricola.ToString() + ";" + Nome + ";" + Esperienze.ToString();
+            return base.ToString() + ";" + Nome + ";" + Esperienze.ToString();
         }
         public bool Equals(mensj_Lavoratore l)
         {
-            if (l == null) return false;
-            if (this == l) return true;
+            if ( l == null ) return false;
+            if ( this == l ) return true;
 
-            return this.Matricola == l.Matricola && this.Nome == l.Nome && this.Esperienze == l.Esperienze;
+            return base.Equals(l) && this.Esperienze == l.Esperienze;
         }
         public override bool Equals(object obj)
         {
-            if (!(obj is mensj_Lavoratore))
+            if ( !(obj is mensj_Lavoratore) )
                 return false;
 
-            if (obj == null) return false;
+            if ( obj == null ) return false;
 
             return this.Equals(obj);
         }

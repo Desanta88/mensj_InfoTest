@@ -20,23 +20,25 @@ namespace mensj_InfoTest
         }
         public void Aggiungi(mensj_Canditato c)
         {
-            if(c!=null)
+            if( c != null )
                 lista.Add(c);
         }
         public string[] Visualizzazione()
         {
             string[] righe = {};
-            for(int i = 0; i < lista.Count; i++)
+            for( int i = 0; i < lista.Count; i++ )
+
                 righe[i] = lista[i].ToString();
+
             return righe;
         }
         public string Modifica(mensj_Canditato n,int matricolaV)
         {
-            if (n != null)
+            if ( n != null )
             {
-                for (int i = 0; i < lista.Count; i++)
+                for ( int i = 0; i < lista.Count; i++ )
                 {
-                    if (lista[i].Matricola == matricolaV)
+                    if ( lista[i].Matricola == matricolaV )
                     { 
                         n.Matricola = matricolaV;
                         lista[i] = n;
@@ -48,24 +50,24 @@ namespace mensj_InfoTest
             else
                 throw new Exception("il candidato non esiste");
         }
-        public string Elimina(int matricola)
+        public void Elimina(int matricola)
         {
-            for (int i = 0; i < lista.Count; i++)
+            for ( int i = 0; i < lista.Count; i++ )
             {
-                if (lista[i].Matricola == matricola)
-                {
+                if ( lista[i].Matricola == matricola )
+                
                     lista.Remove(lista[i]);
-                    return "Candidato eliminato";
-                }    
+                             
             }
-            return "Candidato non trovato";
+      
         }
         public string[] VisuaIdonei()
         {
             string[] righe = { };
-            for (int i = 0; i < lista.Count; i++)
+            for ( int i = 0; i < lista.Count; i++ )
             {
-                if (lista[i].isIdoneo()==true)
+                if ( lista[i].isIdoneo() == true )
+
                     righe[i] = lista[i].ToString();
             }
             return righe;
@@ -73,6 +75,7 @@ namespace mensj_InfoTest
         public void sortD()
         {
             lista.Sort();
+            lista.Reverse();
         }
     }
 }
